@@ -1,6 +1,10 @@
 
 import os
 import models
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers.investor import router as investor_router
@@ -24,8 +28,8 @@ init_db()
 
 
 app = FastAPI(
-    title="Investor Management API",
-    description="API for managing investors and their commitments",
+    title="Investor Dashboard",
+    description="backend serving the investor dashboard",
     version="1.0.0"
 )
 
@@ -43,4 +47,4 @@ app.include_router(commitment_router)
 
 @app.get("/")
 def root():
-    return {"message": "Investor Management API is running with SQLite DB"}
+    return {"message": "Investor dashboard backend is running with SQLite DB"}

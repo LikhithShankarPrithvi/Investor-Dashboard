@@ -13,7 +13,7 @@ const Dashboard: React.FC = () => {
   const [commitmentsLoading, setCommitmentsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const API_BASE_URL = "http://localhost:8000"; // Update this to match your backend URL
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
 
   useEffect(() => {
     const fetchInvestors = async () => {

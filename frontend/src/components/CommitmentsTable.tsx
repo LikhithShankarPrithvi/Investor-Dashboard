@@ -121,7 +121,7 @@ export const CommitmentsTable: React.FC<CommitmentsTableProps> = ({
         {onBackToInvestors && (
           <button
             onClick={onBackToInvestors}
-            className="inline-flex items-center justify-center px-10 w-10 h-10 text-gray-600 bg-white border border-gray-300 rounded-lg hover:border-gray-900 hover:text-gray-700 transition-colors"
+            className="inline-flex items-center justify-center px-10 w-10 h-10 text-gray-600 border-gray-400 bg-gray-100 border border-gray-300 rounded-lg hover:border-gray-900 hover:text-gray-700 transition-colors"
             title="Back to Investors"
           >
             ←

@@ -47,7 +47,7 @@ export function Table<T extends { id: number | string }>({
   const getRowClassName = (item: T, index: number) => {
     const baseClass = `transition-all duration-200 ${
       index % 2 === 0 ? 'bg-white' : 'bg-gray-50'
-    } hover:bg-violet-50`;
+    } hover:bg-gray-200`;
     
     const clickableClass = onRowClick ? 'cursor-pointer hover:shadow-sm group' : '';
     
