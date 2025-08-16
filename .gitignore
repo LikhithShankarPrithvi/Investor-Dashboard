@@ -1,0 +1,43 @@
+# Frontend dependencies
+frontend/node_modules/
+node_modules/
+
+# Backend virtual environment
+backend/venv/
+venv/
+
+# Database and data files
+backend/data.db
+backend/data.csv
+backend/db/data.csv
+*.db
+*.csv
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
