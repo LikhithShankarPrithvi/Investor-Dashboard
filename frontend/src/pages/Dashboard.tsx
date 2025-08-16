@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { InvestorsTable } from "../components/InvestorTable";
 import { CommitmentsTable } from "../components/CommitmentsTable";
-import { formatCommitment, formatDate } from "../utils/format";
+
 import type { InvestorApi, CommitmentApi, AssetClass } from "../types";
 
 const Dashboard: React.FC = () => {
@@ -103,63 +103,39 @@ const Dashboard: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8">
-        <main className="space-y-12">
+    <div className="h-screen bg-gray-200 flex flex-col">
+      <div className="container mx-auto px-12 py-12 flex-1 flex flex-col bg-white">
+        <main className="flex-1 flex flex-col">
           {!selectedInvestor ? (
             // Show investors list
-            <>
-              <div className="mb-6">
+            <div className="flex flex-col h-full">
+              <div className="mb-6 flex-shrink-0">
                 <h2 className="text-2xl font-semibold text-gray-900 text-left">Investors</h2>
               </div>
-              <InvestorsTable 
-                investors={investors} 
-                onInvestorSelect={handleInvestorSelect}
-              />
-            </>
+              <div className="flex-1">
+                <InvestorsTable 
+                  investors={investors} 
+                  onInvestorSelect={handleInvestorSelect}
+                />
+              </div>
+            </div>
           ) : (
             // Show commitments for selected investor
-            <>
-              <div className="mb-6">
-                <button
-                  onClick={handleBackToInvestors}
-                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-violet-700 bg-violet-50 border border-violet-200 rounded-lg hover:bg-violet-100 transition-colors"
-                >
-                  ← Back to Investors
-                </button>
-              </div>
-              
+            <div className="flex-1 flex flex-col">
               {commitmentsLoading ? (
                 <div className="text-center py-12">
                   <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-violet-700 mx-auto mb-4"></div>
                   <p className="text-gray-600">Loading commitments...</p>
                 </div>
               ) : (
-                <>
-                  <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      {selectedInvestor.investor_name}
-                    </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm text-gray-600">
-                      <p><span className="font-semibold">Type:</span> {selectedInvestor.investor_type}</p>
-                      <p><span className="font-semibold">Country:</span> {selectedInvestor.investor_country}</p>
-                      <p><span className="font-semibold">Date Added:</span> {formatDate(selectedInvestor.investor_date_added)}</p>
-                      <p><span className="font-semibold">Total Commitment:</span> <span className="text-violet-700 font-bold">{formatCommitment(selectedInvestor.total_commitment)}</span></p>
-                    </div>
-                  </div>
-                  
-                  <CommitmentsTable 
-                    commitments={commitments} 
-                    assetClasses={assetClasses}
-                    investorName={selectedInvestor.investor_name}
-                  />
-                  
-                  <footer className="mt-16 text-center text-gray-500">
-                    <p>Total Commitments: {commitments.length}</p>
-                  </footer>
-                </>
+                <CommitmentsTable 
+                  commitments={commitments} 
+                  assetClasses={assetClasses}
+                  investorName={selectedInvestor.investor_name}
+                  onBackToInvestors={handleBackToInvestors}
+                />
               )}
-            </>
+            </div>
           )}
         </main>
       </div>
