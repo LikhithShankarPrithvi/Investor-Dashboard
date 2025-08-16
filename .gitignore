@@ -8,10 +8,7 @@ venv/
 
 # Database and data files
 backend/data.db
-backend/data.csv
-backend/db/data.csv
 *.db
-*.csv
 
 # Python cache
 __pycache__/

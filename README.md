@@ -22,7 +22,7 @@ Before running this application, make sure you have the following installed:
 
 ```bash
 git clone <repository-url>
-cd website
+cd Investor-Dashboard
 ```
 
 ### 2. Backend Setup
@@ -52,9 +52,19 @@ pip install -r requirements.txt
 Create a `.env` file in the backend directory:
 ```env
 DATABASE_URL=sqlite:///./data.db
+
+# Server Configuration  
+HOST=localhost
+PORT=8000
+
+# Development Environment
+ENVIRONMENT=development
 ```
 
-#### Initialize Database
+## Initialize Database
+
+#### Please add data.csv file in backend/db folder, incase if it is missing.
+
 The application will automatically:
 - Create database tables on startup
 - Load CSV data if the database is empty
@@ -85,7 +95,12 @@ yarn install
 #### Environment Configuration (Optional)
 Create a `.env` file in the frontend directory:
 ```env
-VITE_API_BASE_URL=http://localhost:8000
+# API Configuration
+API_BASE_URL=http://localhost:8000
+
+# Development Environment
+NODE_ENV=development
+
 ```
 
 #### Run Frontend Development Server
